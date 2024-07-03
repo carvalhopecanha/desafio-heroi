@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir XP do Herói</title>
+ 
+</head>
+<body>
+    <h1>O HERÓI</h1>
+    <div id="hero-info">
+      <div>  <label for="nomeHeroi">Digite o nome do Herói:</label>
+        <input type="text" id="nomeHeroiInput">
+    </div>
+        <label for="xpHeroi">Digite o XP do Herói:</label>
+        <input type="number" id="xpHeroiInput">
+
+        <button onclick="exibirInfo()"> Exibir nome e nível do herói</button>    
+    </div>
+    <div id="result"></div>
+
+    <div class="bg-imagem">    </div>
+    <script>
+        let joao = 'João IX';
+        let xp = [
+            { nome: 'ferro', valor: 1000 },
+            { nome: 'bronze', valor: 2000 },
+            { nome: 'prata', valor: 5000 },
+            { nome: 'ouro', valor: 7000 },
+            { nome: 'platina', valor: 8000 },
+            { nome: 'ascendente', valor: 9000 },
+            { nome: 'imortal', valor: 10000 },
+            { nome: 'radiante', valor: 10001 }
+        ];
+
+        function exibirInfo() {
+            let nomeHeroi = document.getElementById('nomeHeroiInput').value;
+            let xpHeroi = document.getElementById('xpHeroiInput').value;
+            
+            let result = document.getElementById('result');
+
+            // Encontra o nível do herói baseado no XP
+            let nivelHeroi = xp.find(level => xpHeroi >= level.valor)?.nome || "Desconhecido";
+
+            // Exibe o nome do herói e o nível
+            result.innerHTML = `Nome do Herói: ${nomeHeroi}<br>Nível do Herói: ${nivelHeroi}`;
+        }
+        
+
+    </script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: rgb(50, 49, 49);
+
+    }
+    .hero {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+    .xp-item {
+        margin-left: 20px;
+    }
+    label{
+        margin: 10px;
+        color: white;
+    }
+    button{
+        margin: 20px;
+        padding: 10px 15px;
+        color: white;
+        background-color: green;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        }
+        button:hover{
+            background-color: darkgreen;
+        }
+
+        .bg-imagem {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 35%;
+        background-image: url('herois.png');
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: contain;
+        pointer-events: none;
+    }
+    #result{
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+        
+        
+    }
+    H1{
+        color: white;
+        font-size: 44px;
+        font-weight: 900;
+    }
+</style>
+</body>
+</html>
