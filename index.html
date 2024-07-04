@@ -7,7 +7,7 @@
  
 </head>
 <body>
-    <h1>O HERÓI</h1>
+    <h1>DESAFIO DO HERÓI</h1>
     <div id="hero-info">
       <div>  <label for="nomeHeroi">Digite o nome do Herói:</label>
         <input type="text" id="nomeHeroiInput">
@@ -23,14 +23,14 @@
     <script>
         let joao = 'João IX';
         let xp = [
-            { nome: 'ferro', valor: 1000 },
-            { nome: 'bronze', valor: 2000 },
-            { nome: 'prata', valor: 5000 },
-            { nome: 'ouro', valor: 7000 },
-            { nome: 'platina', valor: 8000 },
-            { nome: 'ascendente', valor: 9000 },
-            { nome: 'imortal', valor: 10000 },
-            { nome: 'radiante', valor: 10001 }
+            { nome: 'Ferro', valor: 1000 },
+            { nome: 'Bronze', valor: 2000 },
+            { nome: 'Prata', valor: 5000 },
+            { nome: 'Ouro', valor: 7000 },
+            { nome: 'Platina', valor: 8000 },
+            { nome: 'Ascendente', valor: 9000 },
+            { nome: 'Imortal', valor: 10000 },
+            { nome: 'Radiante', valor: 10001 }
         ];
 
         function exibirInfo() {
@@ -39,10 +39,15 @@
             
             let result = document.getElementById('result');
 
-            // Encontra o nível do herói baseado no XP
-            let nivelHeroi = xp.find(level => xpHeroi >= level.valor)?.nome || "Desconhecido";
+           let nivelHeroi = "Muito fraco";
+           
+           for (let i = xp.length - 1; i >= 0; i --){
+                if (xpHeroi >+ xp[i].valor) {
+                    nivelHeroi = xp[i].nome;
+                    break;
+                }
+           }
 
-            // Exibe o nome do herói e o nível
             result.innerHTML = `Nome do Herói: ${nomeHeroi}<br>Nível do Herói: ${nivelHeroi}`;
         }
         
